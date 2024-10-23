@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testo Laikmatis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    alert("Laikas baigėsi! Jūs būsite nukreiptas.");
+                    window.location.href = "final-results.html"; // Redirect after time ends
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var timeLimit = 45 * 60; // 45 minutes in seconds
+            var display = document.querySelector('#time'); // Display countdown in element with id 'time'
+            startTimer(timeLimit, display);
+        };
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Testo Laikmatis</h1>
+</header>
+
+<div>
+    <p>Likęs laikas: <span id="time">45:00</span></p> <!-- Timer will be displayed here -->
+</div>
+
+</body>
+</html>
