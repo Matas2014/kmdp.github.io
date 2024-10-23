@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laikmatis</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your CSS file -->
+    <script>
+        function startTimer(duration) {
+            var timer = duration, minutes, seconds;
+            var display = document.querySelector('#time');
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    alert("Laikas baigėsi!");
+                    window.location.href = "https://beta.etestavimas.lt/tests"; // Redirect to Beta Testavimas page after time is up
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var timeLimit = 45 * 60; // 45 minutes in seconds
+            startTimer(timeLimit);
+        };
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Laikmatis</h1>
+</header>
+
+<div>
+    <p>Likęs laikas: <span id="time">45:00</span></p> <!-- Timer display -->
+</div>
+
+<div>
+    <p>Jei norite pereiti į Beta testavimą, spauskite žemiau:</p>
+    <a href="https://beta.etestavimas.lt/tests">Eiti į Beta Testavimą</a> <!-- Link to the Beta test page -->
+</div>
+
+</body>
+</html>
